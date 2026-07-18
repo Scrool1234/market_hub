@@ -23,6 +23,9 @@ public class Cart {
     @Column(name = "total_amount")
     private BigDecimal total;
 
+    @Column(name = "discount_amount")
+    private BigDecimal discount;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

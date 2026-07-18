@@ -1,5 +1,5 @@
 package com.example.market_hub.entity;
 
-public enum OrderStatus {
-    PAID
+public enum PaymentStatus {
+
 }

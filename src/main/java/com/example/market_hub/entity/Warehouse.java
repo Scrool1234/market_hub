@@ -29,7 +29,4 @@ public class Warehouse {
     @Column(name = "longitude")
     private Double lon;
 
-    @ManyToMany
-    private List<Product> products;
-
 }

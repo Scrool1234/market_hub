@@ -6,9 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 
 @Getter
 @Setter
@@ -27,14 +24,8 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "price")
-    private BigDecimal price;
-
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-
-    @ManyToMany
-    private List<Warehouse> warehouses;
 
 }
