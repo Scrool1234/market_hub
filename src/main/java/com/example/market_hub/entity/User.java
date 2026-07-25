@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -47,7 +48,7 @@ public class User {
             fetch = FetchType.LAZY,
             mappedBy = "user"
     )
-    private List<Order> orders;
+    private List<Order> orders = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "cart_id")

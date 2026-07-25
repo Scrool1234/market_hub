@@ -30,7 +30,7 @@ public class Address {
     @Column(name = "apartment", nullable = false)
     private String apartment;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -3,6 +3,9 @@ package com.example.market_hub.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -21,6 +24,12 @@ public class Product {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            mappedBy = "product"
+    )
+    public List<ProductVariant> productVariants = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "category_id")

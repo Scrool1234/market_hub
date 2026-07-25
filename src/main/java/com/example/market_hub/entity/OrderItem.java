@@ -18,8 +18,11 @@ public class OrderItem {
     @Column(name = "product_name", nullable = false)
     private String productName;
 
-    @Column(name = "sku", nullable = false)
-    private String sku;
+    @Column(name = "total_amount", nullable = false)
+    private BigDecimal totalAmount;
+
+    @Column(name = "discount_amount", nullable = false)
+    private BigDecimal  discountAmount;
 
     @Column(name = "price_at_purchase", nullable = false)
     private BigDecimal priceAtPurchase;

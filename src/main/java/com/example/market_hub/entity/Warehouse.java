@@ -1,24 +1,13 @@
 package com.example.market_hub.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-
+import lombok.*;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "warehouses", uniqueConstraints = {
-        @UniqueConstraint(
-                columnNames = {
-                        "latitude",
-                        "longitude"
-                }
-        )
-})
+@Builder
+@Table(name = "warehouses")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Warehouse {
@@ -26,13 +15,12 @@ public class Warehouse {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "latitude")
-    private Double lat;
+    @Column(name = "lat", nullable = false)
+    private Long latitude;
 
-    @Column(name = "longitude")
-    private Double lon;
-
+    @Column(name = "lon", nullable = false)
+    private Long lon;
 }
