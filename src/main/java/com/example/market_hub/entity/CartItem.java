@@ -19,6 +19,9 @@ public class CartItem {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "quantity", nullable = false)
+    private Long quantity;
+
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 

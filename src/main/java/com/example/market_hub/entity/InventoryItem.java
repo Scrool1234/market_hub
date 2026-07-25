@@ -1,16 +1,18 @@
 package com.example.market_hub.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "table_inventory")
-public class Inventory {
+@Builder
+@Table(name = "inventory_items")
+@NoArgsConstructor
+@AllArgsConstructor
+public class InventoryItem {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,5 +32,9 @@ public class Inventory {
     @ManyToOne
     @JoinColumn(name = "product_variant")
     private ProductVariant productVariant;
+
+    @ManyToOne
+    @JoinColumn(name = "warehouse_id")
+    private Warehouse warehouse;
 
 }

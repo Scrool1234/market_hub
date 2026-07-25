@@ -30,7 +30,7 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "phone", nullable = false, unique = true)
+    @Column(name = "phone", unique = true)
     private String phone;
 
     @Column(name = "created_at", nullable = false)
@@ -38,12 +38,6 @@ public class User {
 
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-
-    // Связи
-
-    @ManyToOne
-    @JoinColumn(name = "file_id", nullable = false)
-    private File avatarFile;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
@@ -58,6 +52,10 @@ public class User {
     @OneToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
+
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
 
 }

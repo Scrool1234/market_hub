@@ -9,7 +9,12 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
-@Table(name = "product_variants")
+@Table(
+        name = "product_variants",
+        uniqueConstraints = @UniqueConstraint(
+                columnNames = {"sku", "price", "product_id"}
+        )
+)
 public class ProductVariant {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +30,4 @@ public class ProductVariant {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @ManyToOne
-    @JoinColumn(name = "warehouse_id")
-    private Warehouse warehouse;
 }

@@ -1,7 +1,9 @@
 package com.example.market_hub.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -10,11 +12,14 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "payments")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Payment {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private PaymentStatus status;
 

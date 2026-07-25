@@ -26,12 +26,13 @@ public class Order {
     @Column(name = "discount_amount", nullable = false)
     private BigDecimal discountAmount;
 
-    @Column(name = "currency", nullable = false)
-    private String currency;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private OrderStatus orderStatus;
+
+    @OneToOne
+    @JoinColumn(name = "order_address_id")
+    private OrderAddress orderAddress;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

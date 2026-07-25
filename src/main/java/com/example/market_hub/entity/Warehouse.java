@@ -6,13 +6,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 
 
 @Getter
 @Setter
 @Entity
-@Table(name = "warehouses")
+@Table(name = "warehouses", uniqueConstraints = {
+        @UniqueConstraint(
+                columnNames = {
+                        "latitude",
+                        "longitude"
+                }
+        )
+})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Warehouse {

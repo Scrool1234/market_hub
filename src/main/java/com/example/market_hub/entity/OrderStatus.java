@@ -1,5 +1,9 @@
 package com.example.market_hub.entity;
 
 public enum OrderStatus {
-    PAID
+    PENDING_PAYMENT,
+    PAID,
+    DELIVERED,
+    REFUNDED,
+    CANCELED
 }
