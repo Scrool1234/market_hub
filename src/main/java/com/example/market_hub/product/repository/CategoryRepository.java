@@ -1,6 +1,6 @@
-package com.example.market_hub.repository;
+package com.example.market_hub.product.repository;
 
-import com.example.market_hub.entity.Category;
+import com.example.market_hub.product.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
