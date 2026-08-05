@@ -1,4 +1,4 @@
-package com.example.market_hub.entity;
+package com.example.market_hub.user.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

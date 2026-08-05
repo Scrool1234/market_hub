@@ -1,10 +1,13 @@
-package com.example.market_hub.entity;
+package com.example.market_hub.order.entity;
 
+import com.example.market_hub.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -36,24 +39,27 @@ public class Order {
     @Column(name = "status", nullable = false)
     private OrderStatus orderStatus;
 
+    @CreationTimestamp
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
     @OneToOne
-    @JoinColumn(name = "order_address_id")
+    @JoinColumn(name = "order_address_id", nullable = false)
     private OrderAddress orderAddress;
 
     @OneToMany(
             fetch = FetchType.LAZY,
-            mappedBy = "order"
+            mappedBy = "order",
+            cascade = CascadeType.ALL
     )
     List<OrderItem> orderItems = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
 

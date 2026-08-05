@@ -1,5 +1,6 @@
-package com.example.market_hub.entity;
+package com.example.market_hub.payment;
 
+import com.example.market_hub.order.entity.Order;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,30 +12,25 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "cart_items")
+@Table(name = "payments")
 @NoArgsConstructor
 @AllArgsConstructor
-public class CartItem {
+public class Payment {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "quantity", nullable = false)
-    private Long quantity;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private PaymentStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
-
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-
 }

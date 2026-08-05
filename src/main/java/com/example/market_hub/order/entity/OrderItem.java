@@ -1,5 +1,6 @@
-package com.example.market_hub.entity;
+package com.example.market_hub.order.entity;
 
+import com.example.market_hub.product.entity.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,9 @@ public class OrderItem {
 
     @Column(name = "total_amount", nullable = false)
     private BigDecimal totalAmount;
+
+    @Column(name = "subtotal_amount", nullable = false)
+    private BigDecimal subtotalAmount;
 
     @Column(name = "discount_amount", nullable = false)
     private BigDecimal  discountAmount;

@@ -1,4 +1,4 @@
-package com.example.market_hub.entity;
+package com.example.market_hub.product.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,10 +19,10 @@ public class Product {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "description")
+    @Column(name = "description", nullable = false)
     private String description;
 
     @OneToMany(

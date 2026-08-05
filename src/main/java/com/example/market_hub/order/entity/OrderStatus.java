@@ -1,4 +1,4 @@
-package com.example.market_hub.entity;
+package com.example.market_hub.order.entity;
 
 public enum OrderStatus {
     PENDING_PAYMENT,

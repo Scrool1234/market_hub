@@ -1,4 +1,4 @@
-package com.example.market_hub.entity;
+package com.example.market_hub.payment;
 
 public enum PaymentStatus {
     INITIATED,

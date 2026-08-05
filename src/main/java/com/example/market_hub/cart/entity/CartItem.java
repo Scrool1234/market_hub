@@ -1,30 +1,27 @@
-package com.example.market_hub.entity;
+package com.example.market_hub.cart.entity;
 
+import com.example.market_hub.product.entity.Product;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
 
 @Getter
 @Setter
 @Entity
-@Table(name = "carts")
+@Table(name = "cart_items")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cart {
+public class CartItem {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "currency", nullable = false)
-    public String currency;
+    @Column(name = "quantity", nullable = false)
+    private Long quantity;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
@@ -33,13 +30,12 @@ public class Cart {
     private LocalDateTime updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
 
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            mappedBy = "cart"
-    )
-    private List<CartItem> cartItems = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
 
 }

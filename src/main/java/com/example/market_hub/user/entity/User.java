@@ -1,7 +1,11 @@
-package com.example.market_hub.entity;
+package com.example.market_hub.user.entity;
 
+import com.example.market_hub.cart.entity.Cart;
+import com.example.market_hub.order.entity.Order;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -34,9 +38,11 @@ public class User {
     @Column(name = "phone", unique = true)
     private String phone;
 
+    @CreationTimestamp
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
@@ -48,14 +54,21 @@ public class User {
             fetch = FetchType.LAZY,
             mappedBy = "user"
     )
+    @Builder.Default
     private List<Order> orders = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(
+            cascade = CascadeType.ALL
+    )
     @JoinColumn(name = "cart_id")
+    @Builder.Default
     private Cart cart;
 
-    @OneToOne
+    @OneToOne(
+            cascade = CascadeType.ALL
+    )
     @JoinColumn(name = "address_id")
+    @Builder.Default
     private Address address;
 
 
