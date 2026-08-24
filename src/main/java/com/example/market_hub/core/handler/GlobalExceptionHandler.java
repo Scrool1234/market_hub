@@ -1,8 +1,8 @@
-package com.example.market_hub.exception.handler;
+package com.example.market_hub.core.handler;
 
-import com.example.market_hub.exception.dto.ErrorDTO;
-import com.example.market_hub.exception.DuplicateResourceException;
-import com.example.market_hub.exception.ResourceNotFoundException;
+import com.example.market_hub.core.dto.ErrorDTO;
+import com.example.market_hub.core.exception.DuplicateResourceException;
+import com.example.market_hub.core.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;

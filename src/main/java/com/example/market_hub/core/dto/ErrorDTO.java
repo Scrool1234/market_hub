@@ -1,4 +1,4 @@
-package com.example.market_hub.exception.dto;
+package com.example.market_hub.core.dto;
 
 import lombok.Builder;
 
