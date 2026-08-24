@@ -1,18 +1,22 @@
 package com.example.market_hub.cart.entity;
 
-import com.example.market_hub.product.entity.Product;
+import com.example.market_hub.catalog.entity.Product;
+import com.example.market_hub.catalog.entity.ProductVariant;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "cart_items")
+@Builder
+@Table(name = "cart_items",
+        uniqueConstraints = @UniqueConstraint(
+                columnNames = {"cart_id", "product_variant_id"}
+        ))
 @NoArgsConstructor
 @AllArgsConstructor
 public class CartItem {
@@ -23,9 +27,11 @@ public class CartItem {
     @Column(name = "quantity", nullable = false)
     private Long quantity;
 
+    @CreationTimestamp
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
@@ -34,8 +40,8 @@ public class CartItem {
     private Cart cart;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @JoinColumn(name = "product_variant_id")
+    private ProductVariant productVariant;
 
 
 }

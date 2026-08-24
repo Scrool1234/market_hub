@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
-public record CartDTO(
+public record CartResponse(
         LocalDateTime createdAt,
         LocalDateTime updatedAt,
         User user,
