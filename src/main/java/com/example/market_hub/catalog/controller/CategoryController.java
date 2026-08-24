@@ -1,7 +1,7 @@
-package com.example.market_hub.product.controller;
+package com.example.market_hub.catalog.controller;
 
-import com.example.market_hub.product.service.CategoryService;
-import com.example.market_hub.product.dto.CategoryDTO;
+import com.example.market_hub.catalog.service.CategoryService;
+import com.example.market_hub.catalog.dto.category.CategoryResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +18,8 @@ public class CategoryController {
     private final CategoryService categoriesService;
 
     @GetMapping
-    public ResponseEntity<List<CategoryDTO>> getAll() {
+    public ResponseEntity<List<CategoryResponse>> getAll() {
         return ResponseEntity.ok(categoriesService.getAll());
     }
+
 }
